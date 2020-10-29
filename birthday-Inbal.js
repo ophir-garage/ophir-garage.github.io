@@ -6,7 +6,7 @@ button.onclick = ()=> {
     switch(randomGreeting){
         case 0:showGreeting = 'happy birthday'
         break;
-        case 1: showGreeting = 'a great year'
+        case 1: showGreeting = 'have a great year'
         break;
         case 2:
         case 3: showGreeting = 'you are a great teacher'
