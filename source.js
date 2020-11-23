@@ -20,7 +20,6 @@ button.onclick = () => {
     bestOutput.innerHTML = 'your best is : ' + bestCPS.toFixed(2);
     old_time = new_time
     setTimeout(() => {
-        if(newCPS <= 1){
             cps = 0
         }
     }, 1000);
