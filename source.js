@@ -15,7 +15,7 @@ button.onclick = () => {
     if(newCPS <= 1){
         cps = 0
     }
-    output.innerHTML = 'your cps is : ' + cps.toFixed(0);
+    output.innerHTML = 'your cps is : ' + cps.toFixed(2);
     let bestOutput = document.getElementById('reord');
     bestOutput.innerHTML = 'your best is : ' + bestCPS;
     old_time = new_time
