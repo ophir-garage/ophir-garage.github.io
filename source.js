@@ -17,6 +17,6 @@ button.onclick = () => {
     }
     output.innerHTML = 'your cps is : ' + cps.toFixed(2);
     let bestOutput = document.getElementById('reord');
-    bestOutput.innerHTML = 'your best is : ' + bestCPS;
+    bestOutput.innerHTML = 'your best is : ' + bestCPS.toFixed(2);
     old_time = new_time
 };
