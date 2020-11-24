@@ -8,20 +8,24 @@ let bestCPS = 0
 button.onclick = () => {
     new_time = new Date();
     let newCPS = 1000/(new_time - old_time)
-    cps = filter * cps + (1-filter) * newCPS;
+    if (cps==0){
+        cps=newCPS;
+    }else{
+        cps = filter * cps + (1-filter) * newCPS;
+}
     if(bestCPS < cps){
         bestCPS = cps
     }
-    if(newCPS <= 0.5){
-        cps = 0
-        
+    if(newCPS <= 2){
+        cps = 0;
+        removeData(chart);
     }
     output.innerHTML = 'your cps is : ' + cps.toFixed(2);
     let bestOutput = document.getElementById('reord');
     bestOutput.innerHTML = 'your best is : ' + bestCPS.toFixed(2);
     old_time = new_time;
 
-    addData(chart,'0',cps);
+    addData(chart,'0',cps.toFixed(2));
 };
 
 // graph plot
@@ -53,12 +57,12 @@ function addData(chart, label, data) {
     });
     chart.update();
 }
-    removeData(chart)
+    
     
 function removeData(chart) {
-    chart.data.labels.pop();
+    chart.data.labels = [];
     chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
+        dataset.data = [];
     });
     chart.update();
 }
