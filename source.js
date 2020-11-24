@@ -1,20 +1,24 @@
 let button = document.getElementById('button');
-let output = document.getElementById('output')
+let output = document.getElementById('output');
 let cps = 0;
 let old_time = new Date();
 let new_time = new Date();
-let filter = 0.95
-let bestCPS = 0
+let filter = 0.95;
+let bestCPS = 0;
+let graphDiv = document.getElementById('divdavdov');
+graphDiv.style.height = '200px';
+graphDiv.style.width = '1400px';
+document.body.style.backgroundColor = "black";
 button.onclick = () => {
     new_time = new Date();
-    let newCPS = 1000/(new_time - old_time)
-    if (cps==0){
+    let newCPS = 1000/(new_time - old_time);
+    if (cps == 0){
         cps=newCPS;
     }else{
         cps = filter * cps + (1-filter) * newCPS;
-}
+    }
     if(bestCPS < cps){
-        bestCPS = cps
+        bestCPS = cps;
     }
     if(newCPS <= 2){
         cps = 0;
@@ -24,8 +28,9 @@ button.onclick = () => {
     let bestOutput = document.getElementById('reord');
     bestOutput.innerHTML = 'your best is : ' + bestCPS.toFixed(2);
     old_time = new_time;
-
-    addData(chart,'0',cps.toFixed(2));
+    if(cps>0){
+    addData(chart,'',cps.toFixed(2));
+    }
 };
 
 // graph plot
@@ -39,9 +44,9 @@ var chart = new Chart(ctx, {
         labels: [],
         datasets: [{
             lineTension: 0,
-            //label: 'My First dataset',
-            //backgroundColor: 'rgb(255, 99, 132)',
-            //borderColor: 'rgb(255, 99, 132)',
+            label: 'cps',
+            //backgroundColor: 'rgb(0, 0, 0)',
+            borderColor: 'rgb(0, 255, 0)',
             data: []
         }]
     },
