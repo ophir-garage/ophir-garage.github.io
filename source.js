@@ -12,16 +12,16 @@ button.onclick = () => {
     if(bestCPS < cps){
         bestCPS = cps
     }
-    if(newCPS <= 1){
+    if(newCPS <= 0.5){
         cps = 0
+        
     }
     output.innerHTML = 'your cps is : ' + cps.toFixed(2);
     let bestOutput = document.getElementById('reord');
     bestOutput.innerHTML = 'your best is : ' + bestCPS.toFixed(2);
     old_time = new_time;
+
     addData(chart,'0',cps);
-
-
 };
 
 // graph plot
@@ -50,6 +50,15 @@ function addData(chart, label, data) {
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
+    });
+    chart.update();
+}
+    removeData(chart)
+    
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
     });
     chart.update();
 }
