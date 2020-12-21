@@ -1,0 +1,4 @@
+let  memory = []
+function AI(){
+
+}
