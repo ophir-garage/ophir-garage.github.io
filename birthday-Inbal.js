@@ -9,7 +9,7 @@ button.onclick = ()=> {
         case 1: showGreeting = 'have a great year'
         break;
         case 2:
-        case 3: showGreeting = 'you are a great friand'
+        case 3: showGreeting = 'you are a great friend'
         break;
     }
     output.innerHTML = showGreeting;
